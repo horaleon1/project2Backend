@@ -2,21 +2,19 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-  basicInformation: {
-    role: Number,
-    fullName: {
-      name: String,
-      lastName: String
-    },
-    email: String,
-    cellphone: String
-  },
-  complementaryInformation: {
+  role: Number,
+  name: String,
+  lastName: String,
+  email: String,
+  password: String,
+  cellphone: String,
+
     age: String,
     gender: String,
     maritalStatus: String,
     occupation: String,
     curp: String,
+    
     address: {
       street: String,
       number: String,
@@ -25,6 +23,7 @@ const UserSchema = new Schema({
       postalCode: String,
       city: String
     },
+
     familyContact: {
       fullName: {
         name: String,
@@ -70,7 +69,7 @@ const UserSchema = new Schema({
         relationship: String
       }
     }
-  }
+  
 });
 
 const UserPublic = mongoose.model("UserPublic", UserSchema);

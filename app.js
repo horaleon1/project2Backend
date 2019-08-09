@@ -10,9 +10,15 @@ const app = express();
       
 
 //Connect
-mongoose.connect('mongodb://localhost/miAmbulancia')
-.then( db => console.log('Mongo esta conectado'))
-.catch( err => console.log(err));
+mongoose.connect('mongodb+srv://admin:12345@ambulance-yh6w8.mongodb.net/test?retryWrites=true&w=majority',{
+  useNewUrlParser: true
+}).then(() => {
+  console.log('Conectado a Mongo DB Atlas')
+})
+.catch(err => console.log(err));
+
+
+
 
 //Middlewares
 app.use(morgan('dev'));
@@ -21,6 +27,8 @@ app.use(cors());
 
 //Routes
 app.use('/user',require('./routes/user'))
+app.use('/userPublic',require('./routes/userPublic'))
+app.use('/userAmbulance/', require('./routes/userAmbulance'))
 
 //Static
 app.use(express.static('public'));
