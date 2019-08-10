@@ -5,6 +5,7 @@ const morgan     = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
       
@@ -31,7 +32,7 @@ app.use('/userPublic',require('./routes/userPublic'))
 app.use('/userAmbulance/', require('./routes/userAmbulance'))
 
 //Static
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Server is listening
